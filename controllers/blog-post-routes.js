@@ -1,7 +1,3 @@
-const router = require('express').Router();
-
-router.get('/', async (req,res) => {
-   res.render('blog');
-});
-
-module.exports = router;
+const path = require('path');
+const express = require('express');
+const session = require('express-session');
