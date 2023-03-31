@@ -1,0 +1,42 @@
+{{#> layouts/main }}
+   <h1>Welcome to The Techy Codex!</h1>
+   <p>This is a blog that consists of coding tidbits, tips, howto's, and general coding comedy.</p>
+   <p>My goal is to help you get to the next step on your programming journey.</p>
+   <h2>Recent Posts</h2>
+   <ul>
+      {{#each recentPosts}}
+         <a href="/post?id={{dataValues.id}}">"{{dataValues.name}}" <i>by <b>{{dataValues.user.dataValues.username}}</b></a>
+         <br>
+      {{/each}}
+   </ul>
+   <nav>
+      <ul class="pagination">
+         {{#if (greaterThan totalPages 1)}}
+            {{#if (notEqual currentPage 1)}}
+               <li class="page-item">
+                  <a class="page-link" href="/?page={{decrement currentPage}}">
+                     <button>Previous</button>
+                  </a>
+               </li>
+            {{/if}}
+            {{#each totalPages}}
+               {{#if (equal this ../currentPage)}}
+                  <li class="page-item active"><a class="page-link" href="#">{{this}}</a></li>
+               {{else}}
+                  <li class="page-item"><a class="page-link" href="/?page={{this}}">{{this}}</a></li>
+               {{/if}}
+            {{/each}}
+            {{#if (notEqual currentPage totalPages)}}
+               Page {{currentPage}} of {{totalPages}}
+               <li class="page-item">
+                  <a class="page-link" href="/?page={{increment currentPage}}">
+                     <button>Next</button>
+                  </a>
+               </li>
+            {{else}}
+               {{currentPage}} of {{totalPages}}
+            {{/if}}
+         {{/if}}
+      </ul>
+   </nav>
+{{/layouts/main}}

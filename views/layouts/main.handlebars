@@ -1,0 +1,65 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="css/pico.min.css" />
+    {{#if isLoggedIn}}
+      <script type="text/javascript" src="js/users/logout.js"></script>
+    {{else}}
+      <script type="text/javascript" src="js/users/login.js"></script>
+    {{/if}}
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><strong><a href="/">The Techy Codex</a></strong></li>
+      </ul>
+      <ul>
+        <li><a href="/">Home</a></li>
+        {{#if isLoggedIn}}
+          <li><a href="/dashboard">Dashboard</a></li>
+        {{/if}}
+      </ul>
+      <ul>
+        {{#if isLoggedIn}}
+          <li>
+            <p>User: {{{username}}}</p>
+          </li>
+          <li>
+            <form method="POST" action="/api/users/logout">
+              <button type="button" onclick="logout()">Logout</button>
+            </form>
+          </li>
+        {{else}}
+          <li>
+            <input
+              type="text"
+              name="login-user"
+              placeholder="Username/Email"
+              id="user-login-input"
+            />
+          </li>
+          <li>
+            <input
+              type="password"
+              name="login-password"
+              placeholder="Password"
+              id="password-login-input"
+            />
+          </li>
+          <li>
+            <button type="button" onclick="login()">Login</button>
+          </li>
+          <li>
+            <a href="/register">
+              <button type="button" class="secondary">Register</button>
+            </a>
+          </li>
+        {{/if}}
+      </ul>
+    </nav>
+    <article>
+      {{{body}}}
+    </article>
+  </body>
+</html>

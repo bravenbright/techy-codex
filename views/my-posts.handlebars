@@ -1,0 +1,10 @@
+{{#> layouts/main }}
+   <ul>
+      {{#each posts}}
+         <li>
+            <a href="/post?id={{dataValues.id}}">"{{dataValues.name}}" (Created: {{format_date dataValues.createdAt}} Updated: {{format_date dataValues.updatedAt}})</a>
+         </li>
+         <br>
+      {{/each}}
+   </ul>
+{{/layouts/main}}
