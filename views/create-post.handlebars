@@ -1,0 +1,8 @@
+{{#> layouts/main }}
+    <script type="text/javascript" src="js/posts/createPost.js"></script>
+    <h1>Create Post</h1>
+    <label for="register-username">Post Title:</label>
+    <input type="text" id="post-name-input" name="post-name" placeholder="Fancy new post!">
+    <textarea id="post-content-input" name="post-content" rows="4" cols="50" placeholder="Really good content!"></textarea>
+    <button class="submit-button" type="button" onclick="createPost()">Post!</button>
+{{/layouts/main}}

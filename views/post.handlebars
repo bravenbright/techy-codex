@@ -1,0 +1,8 @@
+{{#> layouts/main }}
+    <script type="text/javascript" src="js/users/register.js"></script>
+    <h1>{{post.dataValues.name}}</h1>
+    <p>Posted by {{post.dataValues.user.dataValues.username}}</p>
+    <p><i>Created: {{format_date post.dataValues.createdAt}}</i></p>
+    <p><i>Last Updated: {{format_date post.dataValues.updatedAt}}</i></p>
+    <p>{{post.dataValues.content}}</p>
+{{/layouts/main}}

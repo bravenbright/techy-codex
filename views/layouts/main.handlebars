@@ -1,34 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href=""
-   <title>The Techy Codex</title>
-
-</head>
-
-<body>
-   <h1>The Techy Codex</h1>
-   <h2>This is a blog that consists of coding tidbits, tips, howto's, and general coding comedy.
-      My goal is to help you get to the next step on your programming journey.</h2>
-   <nav>
-  <ul>
-    <li><strong>Bravnbright</strong></li>
-  </ul>
-  <ul>
-    <li><a href="#Home">Home</a></li>
-    <li><a href="#blog">Blog</a></li>
-    <li><a href="#forum">Forum</a></li>
-    <li><a href="#aboutme" role="button">About Me</a></li>
-  </ul>
-</nav>
-
-   <main class='blog-post-container'></main>
-
-   {{{body}}}
-</body>
-
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="css/pico.min.css" />
+    {{#if isLoggedIn}}
+      <script type="text/javascript" src="js/users/logout.js"></script>
+    {{else}}
+      <script type="text/javascript" src="js/users/login.js"></script>
+    {{/if}}
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><strong><a href="/">The Techy Codex</a></strong></li>
+      </ul>
+      <ul>
+        <li><a href="/">Home</a></li>
+        {{#if isLoggedIn}}
+          <li><a href="/dashboard">Dashboard</a></li>
+        {{/if}}
+      </ul>
+      <ul>
+        {{#if isLoggedIn}}
+          <li>
+            <p>User: {{{username}}}</p>
+          </li>
+          <li>
+            <form method="POST" action="/api/users/logout">
+              <button type="button" onclick="logout()">Logout</button>
+            </form>
+          </li>
+        {{else}}
+          <li>
+            <input
+              type="text"
+              name="login-user"
+              placeholder="Username/Email"
+              id="user-login-input"
+            />
+          </li>
+          <li>
+            <input
+              type="password"
+              name="login-password"
+              placeholder="Password"
+              id="password-login-input"
+            />
+          </li>
+          <li>
+            <button type="button" onclick="login()">Login</button>
+          </li>
+          <li>
+            <a href="/register">
+              <button type="button" class="secondary">Register</button>
+            </a>
+          </li>
+        {{/if}}
+      </ul>
+    </nav>
+    <article>
+      {{{body}}}
+    </article>
+  </body>
 </html>
